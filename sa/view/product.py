@@ -17,8 +17,18 @@ def hotel_api():
         products = Product.query.filter_by(**args).offset((page - 1) * per_page).limit(per_page).all()
         result = ProductSchema(many=True).dump(products)
         return jsonify({'result': {'product': result.data}, 'message': "Success", 'error': False})
-    else:
+    elif request.method == 'POST':
         post = Product(**request.json)
         post.save()
         result = ProductSchema().dump(post)
         return jsonify({'result': {'product': result.data}, 'message': "Success", 'error': False})
+
+
+@app.route('/api/v1/message/<int:id>', methods=['PUT'])
+def product_id(id):
+    put = Product.query.filter_by(id=id).first()
+    if put:
+        put.status = request.json['status']
+        put.update_db()
+        result = ProductSchema().dump(put)
+        return jsonify({'result': result.data, "status": "Success", 'error': False})
