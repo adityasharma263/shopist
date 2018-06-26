@@ -889,8 +889,8 @@ border: 1px solid #555;
 	    float: left;
 }
 .products-grd{
-	float:left;
-	width:31.9%;
+	/* float:left; */
+	/* width:31.9%; */
 	text-align: center;
 	position:relative;
 }

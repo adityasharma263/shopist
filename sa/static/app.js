@@ -159,6 +159,21 @@ $scope.searchProduct=function(){
 .controller('adminController',["$scope", "$http", function($scope, $http) {
     $scope.product={};
     console.log("$scope.product");
+
+    $http({
+      method: 'GET',
+      url: '/api/v1/product'
+    }).then(function successCallback(response) {
+        console.log("res",response);
+        $scope.productsData = response.data.result.product;
+  
+          
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
     
     $scope.createProduct = function() {
         console.log("$scope.product",$scope.product);
