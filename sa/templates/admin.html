@@ -102,15 +102,15 @@
                 </label>   
                 <br>
                 <label for="brand"> Brand Name:
-                    <input id="brand" class="box" ng-model="product.brand_name" type="text" required>
+                    <input id="brand" class="box" ng-model="product.brand" type="text" required>
                 </label>
                 <br> 
                 <label for="Category">Category:
                     <input id="address" class="box" ng-model="product.category" type="text" required>
                 </label>
                 <br> 
-                <label for="Price">Price: 
-                    <input id="desc" class="box" ng-model="product.price" type="number" required>
+                <label for="amazone_price">amazone_price: 
+                    <input id="desc" class="box" ng-model="product.amazon_price" type="number" required>
                 </label> 
                 <br>
                 <label for="image_url">image_url: 
@@ -120,6 +120,22 @@
                 <label for="amazon_associates_url">amazon_associates_url: 
                     <input id="desc" class="box" ng-model="product.amazon_associates_url" type="text" required>
                 </label>
+                <br>
+                <label for="amazon_associates_url">flipkart_associates_url: 
+                    <input id="desc" class="box" ng-model="product.flipkart_associates_url" type="text" required>
+                </label>
+                <br>
+                <label for="snapdeal_associates_url">snapdeal_associates_url: 
+                    <input id="desc" class="box" ng-model="product.snapdeal_associates_url" type="text" required>
+                </label>
+                <br>
+                <label for="flipkart_price">flipkart_price: 
+                    <input id="desc" class="box" ng-model="product.flipkart_price" type="number" required>
+                </label>
+                <br>
+                <label for="snapdeal_price">Snapdeal Price: 
+                    <input id="desc" class="box" ng-model="product.snapdeal_price" type="number" required>
+                </label> 
                 <div style="overflow:auto;">
                     <div style="float:right;">
                     <button type="button"  id="submitBtn" ng-click="createProduct()">submit</button>

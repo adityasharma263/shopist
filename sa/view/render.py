@@ -18,6 +18,8 @@ def product_list():
     page = int(request.args.get('page', 1))
     products = Product.query.filter_by(**args).offset((page - 1) * per_page).limit(per_page).all()
     data = ProductSchema(many=True).dump(products)
+    print("faga")
+
     return render_template('product_list.html', hotel=data, per_page=per_page, page=page)
 
 
