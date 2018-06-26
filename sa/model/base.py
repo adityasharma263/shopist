@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'aditya'
 """base class for every model class"""
-from cta import db
+from sa import db
 from sqlalchemy.sql import func
 from sqlalchemy.orm import load_only
 
