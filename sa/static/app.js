@@ -17,7 +17,7 @@ angular.module('product', ['angular.filter'])
 
         $http({
           method: 'POST',
-          url: 'http://127.0.0.1:8000/api/v1/product',
+          url: '/api/v1/product',
           data: $scope.product,
         
         }).then(function (res) {
@@ -37,17 +37,16 @@ angular.module('product', ['angular.filter'])
 .controller('productController',["$scope", "$http", function($scope, $http, $filter) {
     
     console.log("$scope.product");
-$scope.products=[];
 
     $http({
         method: 'GET',
         url: '/api/v1/product'
 
       }).then(function successCallback(res) {
+          console.log("res",res);
+          // $scope.products = res.data.result.product;
 
-          $scope.products = res.data.result.product;
-
-          console.log("$scope.product",$scope.products);
+          // console.log("$scope.product",$scope.products);
 
         }, function errorCallback(response) {
 

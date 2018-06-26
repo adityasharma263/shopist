@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   75% { opacity: 0.0; }
   }
   </style>
+<script type="text/javascript" src="../static/app.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -58,8 +59,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 <!-- //the jScrollPane script -->
 </head>
-<body ng-app="product">
-    <div ng-controller="productController"> 
+<body >
+    <div> 
         <!--start-home-->
         <!-- header_top -->
         <div class="top_bg" id="home">
@@ -531,16 +532,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="products-grids">
                         <div class="col-md-8 products-grid-left">
                             <div class="products-grid-lft">
-                                <div class="products-grd" ng-repeat="product in products">
+                                <div class="products-grd" >
                                     <div class="p-one simpleCart_shelfItem prd">
-                                        <a href="{{product.amazon_associates_url}}">
+                                        <!-- <a href="{{product.amazon_associates_url}}">
                                             <img src="{{product.image_url}}" alt="" class="img-responsive" />
                                         </a>
                                         <h4>{{product.name}}</h4>
                                         <p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">{{product.price}}</span></a></p>
                                         <div class="pro-grd">
                                             <a href="product.amazon_associates_url">Quick View</a>
-                                        </div>
+                                        </div> -->
                                     </div>	
                                 </div>
                                 <!-- <div class="products-grd">
@@ -841,7 +842,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
     </div>                                    
-</body>
 <script type="text/javascript" src="../static/app.js"></script>
+
+</body>
 
 </html>
