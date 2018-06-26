@@ -88,7 +88,6 @@
             }
         </style>
     </head>
-    <link rel="stylesheet" href="../static/css/admin.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
 
@@ -97,6 +96,16 @@
         <form id="regForm">
             <div class="tab">
                 <h1>Product Details</h1>
+
+                <label for="name">Search product (for Update):
+                <input ng-model="searchText" placeholder="enter search term here">
+                    <select class="selectpicker"  ng-model="productid" >
+                        <option ng-repeat="data in productsData  | filter : searchText" value="[[data.id]]">
+                            [[data.name]]
+                        </option>
+                    </select>
+                </label> 
+                <br>
                 <label for="name">Product Name: 
                     <input class="box" id="name" ng-model="product.name" type="text" required/>
                 </label>   
@@ -138,8 +147,8 @@
                 </label> 
                 <div style="overflow:auto;">
                     <div style="float:right;">
-                    <button type="button"  id="submitBtn" ng-click="createProduct()">submit</button>
-                    <button type="button"  id="submitBtn" ng-click="updateProduct()">Update</button>
+                    <button type="button"   ng-click="updateProduct()">Update</button>
+                    <button type="button"  ng-click="createProduct()">submit</button>
                     </div>
                 </div>
             </div>

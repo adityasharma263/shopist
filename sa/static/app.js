@@ -158,8 +158,7 @@ $scope.searchProduct=function(){
 
 .controller('adminController',["$scope", "$http", function($scope, $http) {
     $scope.product={};
-    console.log("$scope.product");
-
+    
     $http({
       method: 'GET',
       url: '/api/v1/product'
@@ -174,10 +173,12 @@ $scope.searchProduct=function(){
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    
+    $scope.updateData=function(){
+      $scope.product=$scope.productdata;
+      return $scope;
+    }
+    console.log($scope.product);
     $scope.createProduct = function() {
-        console.log("$scope.product",$scope.product);
-
 
         $http({
           method: 'POST',
@@ -194,6 +195,23 @@ $scope.searchProduct=function(){
           })
         
     }
+    $scope.updateProduct = function() {
+
+      $http({
+        method: 'PUT',
+        url: '/api/v1/product/'+$scope.productid,
+        data: $scope.product,
+      
+      }).then(function (res) {
+      //   createToast("'hotel successfully created!!!'","green");
+          
+        },
+        // failed callback
+        function (req) {
+          alert("'Something went wrong!!!'");
+        })
+      
+      }
 
 }])
 
