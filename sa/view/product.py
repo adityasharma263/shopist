@@ -7,7 +7,7 @@ from sa.schema.product import ProductSchema
 
 
 @app.route('/api/v1/product', methods=['GET', 'POST'])
-def hotel_api():
+def product_api():
     if request.method == 'GET':
         args = request.args.to_dict()
         search = args.get("search", None)

@@ -11,15 +11,8 @@ from  sqlalchemy.sql.expression import func
 
 @app.route('/product', methods=['GET'])
 def product_list():
-    args = request.args.to_dict()
-    args.pop('page', None)
-    args.pop('per_page', None)
-    per_page = int(request.args.get('per_page', 10))
-    page = int(request.args.get('page', 1))
-    products = Product.query.filter_by(**args).offset((page - 1) * per_page).limit(per_page).all()
-    data = ProductSchema(many=True).dump(products)
-
-    return render_template('product_list.html', hotel=data, per_page=per_page, page=page)
+    
+    return render_template('product_list.html')
 
 
 @app.route('/', methods=['GET'])
