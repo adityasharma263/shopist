@@ -1,10 +1,15 @@
-    `<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <head>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Trip Key</title>
-        <style>
+        <!-- <style>
             * {
             box-sizing: border-box;
             }
@@ -86,81 +91,189 @@
             .step.finish {
             background-color: #4CAF50;
             }
-        </style>
+        </style> -->
     </head>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
+   
 
 <body ng-app="product">
     <div ng-controller="adminController">    
-        <form id="regForm">
-            <div class="tab">
-                <h1>Product Details</h1>
-
-                <label for="name">Search product (for Update):
-                <input ng-model="searchText" placeholder="enter search term here">
-                    <select class="selectpicker"  ng-model="productid" >
-                        <option ng-repeat="data in productsData  | filter : searchText" value="[[data.id]]">
-                            [[data.name]]
-                        </option>
-                    </select>
-                </label> 
-                <br>
-                <label for="name">Product Name: 
-                    <input class="box" id="name" ng-model="product.name" type="text" required/>
-                </label>   
-                <br>
-                <label for="brand"> Brand Name:
-                    <input id="brand" class="box" ng-model="product.brand" type="text" required>
-                </label>
-                <br> 
-                <label for="Category">Category:
-                    <input id="address" class="box" ng-model="product.category" type="text" required>
-                </label>
-                <br> 
-                <label for="amazone_price">amazone_price: 
-                    <input id="desc" class="box" ng-model="product.amazon_price" type="number" required>
-                </label> 
-                <br>
-                <label for="image_url">image_url: 
-                    <input id="desc" class="box" ng-model="product.image_url" type="text" required>
-                </label>
-                <br>
-                <label for="amazon_associates_url">amazon_associates_url: 
-                    <input id="desc" class="box" ng-model="product.amazon_associates_url" type="text" required>
-                </label>
-                <br>
-                <label for="amazon_associates_url">flipkart_associates_url: 
-                    <input id="desc" class="box" ng-model="product.flipkart_associates_url" type="text" required>
-                </label>
-                <br>
-                <label for="snapdeal_associates_url">snapdeal_associates_url: 
-                    <input id="desc" class="box" ng-model="product.snapdeal_associates_url" type="text" required>
-                </label>
-                <br>
-                <label for="flipkart_price">flipkart_price: 
-                    <input id="desc" class="box" ng-model="product.flipkart_price" type="number" required>
-                </label>
-                <br>
-                <label for="snapdeal_price">Snapdeal Price: 
-                    <input id="desc" class="box" ng-model="product.snapdeal_price" type="number" required>
-                </label> 
-                <div style="overflow:auto;">
-                    <div style="float:right;">
-                    <button type="button"   ng-click="updateProduct()">Update</button>
-                    <button type="button"  ng-click="createProduct()">submit</button>
-                    </div>
+        <div class="container"  >
+            <h2>Product details </h2>
+            <div class="container">
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                        
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">Update product</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label" for="name">Product Name: </label>
+                                    <div > 
+                                        <input  class="form-control" id="name" ng-model="product.name" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label " for="brand"> Brand Name: </label>
+                                    <div>          
+                                        <input  class="form-control"  ng-model="product.brand"  type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label"  for="Category">Category: </label>
+                                    <div >          
+                                        <input  class="form-control" id="name" ng-model="product.category" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label " for="amazone_price">amazone price:  </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"  ng-model="product.amazon_price" type="number">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label " for="image_url">image_url:  </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"  ng-model="product.image_url" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label "  for="amazon_associates_url">amazon_associates_url:  </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"ng-model="product.amazon_associates_url" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label "  for="amazon_associates_url">flipkart_associates_url:   </label>
+                                    <div >          
+                                        <input  class="form-control" id="name" ng-model="product.flipkart_associates_url" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label"  for="snapdeal_associates_url">snapdeal_associates_url:  </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"  ng-model="product.snapdeal_associates_url" type="text">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label " for="flipkart_price">flipkart_price:   </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"ng-model="product.flipkart_price" type="number">
+                                    </div>
+                                <!-- </div> -->
+                                <!-- <div class="form-group"> -->
+                                    <label class="control-label "  for="snapdeal_price">Snapdeal Price: </label>
+                                    <div >          
+                                        <input  class="form-control" id="name"ng-model="product.snapdeal_price" type="number">
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" ng-click="updateProduct()">update</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                            
+                        </div>
+                        </div>
                 </div>
             </div>
-            <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align:center;margin-top:40px;">
-                <span class="step"></span>
+            <form class="form-horizontal" >
+                <button class="btn btn-defalut" ng-click="hideShow()">create</button>
+                <button class="btn btn-defalut" ng-click="showHide()">update</button>
+                <div ng-show="myvar" class="form-group" >
+                    <label class="control-label col-sm-2"for="name">Search product (for Update):</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" data-toggle="dropdown" ng-model="searchText" placeholder="enter search term here">
+                            <div  class="container" style="max-height: 50%;overflow-y: scroll;">
+                                <div ng-repeat="data in productsData  | filter : searchText" >
+                                [[data.name]] <button class="btn" data-toggle="modal" data-target="#myModal" ng-click="editProductData(data)">edit</button>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div ng-hide="myvar">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Product Name: </label>
+                        <div class="col-sm-10"> 
+                            <input  class="form-control" id="name" ng-model="product.name" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="brand"> Brand Name: </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control"  ng-model="product.brand"  type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"  for="Category">Category: </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name" ng-model="product.category" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="amazone_price">amazone price:  </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"  ng-model="product.amazon_price" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="image_url">image_url:  </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"  ng-model="product.image_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"  for="amazon_associates_url">amazon_associates_url:  </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"ng-model="product.amazon_associates_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"  for="amazon_associates_url">flipkart_associates_url:   </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name" ng-model="product.flipkart_associates_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"  for="snapdeal_associates_url">snapdeal_associates_url:  </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"  ng-model="product.snapdeal_associates_url" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="flipkart_price">flipkart_price:   </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"ng-model="product.flipkart_price" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2"  for="snapdeal_price">Snapdeal Price: </label>
+                        <div class="col-sm-10">          
+                            <input  class="form-control" id="name"ng-model="product.snapdeal_price" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" ng-click="createProduct()">Submit</button>
+
+                    </div>
+                    </div>
+                </div>
+            </form>
             </div>
-        </form>
     </div>
     
 <script type="text/javascript" src="../static/app.js"></script>
-<script>
+<!-- <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the crurrent tab
     function showTab(n) {
@@ -232,7 +345,7 @@
       //... and adds the "active" class on the current step:
       x[n].className += " active";
     }
-    </script>
+    </script> -->
 
 
 </body>

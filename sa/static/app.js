@@ -2,6 +2,7 @@ angular.module('product', ['angular.filter'])
 .config(['$interpolateProvider', function($interpolateProvider ,$locationProvider) {
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
+  
   // $locationProvider.html5Mode(true);
 }])
 
@@ -51,6 +52,29 @@ onload=function(){
   
 
 }
+$scope.search=function(searchitem){
+  console.log('brandname',searchitem);
+  $scope.productData=[];
+
+  $http({
+    method: 'GET',
+    url: '/api/v1/product?search='+searchitem,
+  }).then(function successCallback(response) {
+      console.log("res",response);
+      if(response.data.result.product.length>0){
+        for(i=0; i<response.data.result.product.length; i++){
+
+        $scope.productData.push(response.data.result.product[i]);
+        }
+      }
+      // this callback will be called asynchronously
+      // when the response is available
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+  });
+
+} 
 $scope.searchBrand=function(brandname){
   console.log('brandname',brandname);
   $scope.productData=[];
@@ -104,7 +128,17 @@ $scope.searchCategory=function(categoryname){
 
 .controller('adminController',["$scope", "$http", function($scope, $http) {
     $scope.product={};
-    
+    $scope.myvar=false;
+    $scope.showHide=function(){
+      $scope.myvar=true;
+    }
+    $scope.hideShow=function(){
+      $scope.myvar=false;
+    }
+    $scope.editProductData=function(data){
+      console.log("data",data);
+      $scope.product=data;
+    }
     $http({
       method: 'GET',
       url: '/api/v1/product'
@@ -119,11 +153,7 @@ $scope.searchCategory=function(categoryname){
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
-    $scope.updateData=function(){
-      $scope.product=$scope.productdata;
-      return $scope;
-    }
-    console.log($scope.product);
+    
     $scope.createProduct = function() {
 
         $http({
@@ -143,9 +173,10 @@ $scope.searchCategory=function(categoryname){
     }
     $scope.updateProduct = function() {
 
+      console.log("id",$scope.product);
       $http({
         method: 'PUT',
-        url: '/api/v1/product/'+$scope.productid,
+        url: '/api/v1/product/'+$scope.product.id,
         data: $scope.product,
       
       }).then(function (res) {
@@ -163,15 +194,16 @@ $scope.searchCategory=function(categoryname){
 
 .controller('homeController',["$scope", "$http", function($scope, $http) {
   
-
+  $scope.categoryData=[];
   $http({
     method: 'GET',
     url: '/api/v1/product'
   }).then(function successCallback(response) {
-      console.log("res",response);
       $scope.productsData = response.data.result.product;
+      $scope.brandData = response.data.result.product;
 
-      console.log("data2",$scope.productsData);
+      $scope.categoryData = response.data.result.product;
+
       // $scope.eventData.description= $scope.eventData.description.replace("\n", "<br>");
         
       // this callback will be called asynchronously
@@ -181,8 +213,9 @@ $scope.searchCategory=function(categoryname){
       // or server returns response with an error status.
   });
 $scope.searchProduct=function(){
-
-  window.open('/product/list?name='+$scope.productname);
+  $scope.location={};
+  $scope.location=document.location.origin;
+  window.open($scope.location+'/product?search='+$scope.productname);
 }
       
       

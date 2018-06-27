@@ -94,8 +94,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>	
         </div>
         <form style="margin: 10px;">
-            <input type="text" placeholder="Search.." name="search" ng-model="productname">
-            <button ><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="Search.." name="search" ng-model="searchitem">
+            <button ng-click="search(searchitem)"><i class="fa fa-search"></i></button>
         </form>
         <div></div>
 		<!--start-header-menu-->
@@ -157,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="products-grids">
 				<div class="col-md-8 products-grid-left">
-					<div class="col-sm-4" ng-repeat="data in productData | filter : productname">
+					<div class="col-sm-4" ng-repeat="data in productData ">
 						<div class="products-grd">
 							<div class="p-one simpleCart_shelfItem prd">
 								<a href="">
