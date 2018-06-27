@@ -213,9 +213,8 @@ $scope.searchCategory=function(categoryname){
       // or server returns response with an error status.
   });
 $scope.searchProduct=function(){
-  $scope.location={};
-  $scope.location=document.location.origin;
-  window.open($scope.location+'/product?search='+$scope.productname);
+
+  window.open('/product?search='+$scope.productname);
 }
       
       
