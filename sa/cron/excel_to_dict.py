@@ -17,5 +17,8 @@ class Excel(Command):
             row_data = {}
             for col_number, cell in enumerate(worksheet.row(row_number)):
                 row_data[keys[col_number]] = cell.value
+                for k in row_data:
+                    if row_data[k] is "":
+                        row_data[k] = None
             post = Product(**row_data)
             post.save()
