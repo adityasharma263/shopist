@@ -48,28 +48,13 @@ onload=function(){
       // called asynchronously if an error occurs
       // or server returns response with an error status.
   });
-  // $http({
-  //   method: 'GET',
-  //   url: '/api/v1/product'+$scope.location,
-  // }).then(function successCallback(response) {
-  //     console.log("res",response);
-  //     if(response.data.result.product.length>0){
-  //       for(i=0; i<response.data.result.product.length; i++){
-
-  //       $scope.productData.push(response.data.result.product[i]);
-  //       }
-  //     }
-  //     // this callback will be called asynchronously
-  //     // when the response is available
-  //   }, function errorCallback(response) {
-  //     // called asynchronously if an error occurs
-  //     // or server returns response with an error status.
-  // });
+  
 
 }
 $scope.searchBrand=function(brandname){
   console.log('brandname',brandname);
   $scope.productData=[];
+  delete $scope.productname;
 
   $http({
     method: 'GET',
@@ -92,7 +77,7 @@ $scope.searchBrand=function(brandname){
 }  
 $scope.searchCategory=function(categoryname){
   $scope.productData=[];
-
+  console.log("categoryname",categoryname);
   $http({
     method: 'GET',
     url: '/api/v1/product?category='+categoryname,
@@ -112,46 +97,7 @@ $scope.searchCategory=function(categoryname){
   });
 
 }
-$scope.searchProduct=function(){
-  $scope.productData=[];
-  // $http({
-  //   method: 'GET',
-  //   url: '/api/v1/product?brand='+$scope.productname
-  // }).then(function successCallback(response) {
-  //     console.log("res",response);
-  //     if(response.data.result.product.length>0){
-  //       for(i=0; i<response.data.result.product.length; i++){
 
-  //       $scope.productData.push(response.data.result.product[i]);
-  //       }
-  //     }
-  //     // $scope.eventData.description= $scope.eventData.description.replace("\n", "<br>");
-       
-  //     // this callback will be called asynchronously
-  //     // when the response is available
-  //   }, function errorCallback(response) {
-  //     // called asynchronously if an error occurs
-  //     // or server returns response with an error status.
-  // });
-  $http({
-    method: 'GET',
-    url: '/api/v1/product?name='+$scope.productname,
-  }).then(function successCallback(response) {
-      console.log("res",response);
-      if(response.data.result.product.length>0){
-        for(i=0; i<response.data.result.product.length; i++){
-
-        $scope.productData.push(response.data.result.product[i]);
-        }
-      }
-      // this callback will be called asynchronously
-      // when the response is available
-    }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-  });
-
-}
 
 })
 
@@ -235,9 +181,8 @@ $scope.searchProduct=function(){
       // or server returns response with an error status.
   });
 $scope.searchProduct=function(){
-  $scope.location={};
-  $scope.location=document.location.origin;
-  window.open($scope.location+'/product/list?name='+$scope.productname);
+
+  window.open('/product/list?name='+$scope.productname);
 }
       
       

@@ -2391,8 +2391,7 @@ margin:0;
 	margin-top:2em;
 	}
 	.products-grd {
-		float: left;
-		width: 29.9%;
+		max-width:14px; 
 		padding: 0;
 	}
 	.p-one h4 {
