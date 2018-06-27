@@ -237,7 +237,7 @@ $scope.searchProduct=function(){
 $scope.searchProduct=function(){
   $scope.location={};
   $scope.location=document.location.origin;
-  window.open($scope.location+'/product/list?name='+$scope.productname);
+  window.open($scope.location+'/product?name='+$scope.productname);
 }
       
       
