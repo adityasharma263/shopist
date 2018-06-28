@@ -13,11 +13,11 @@ def product_api():
         search = args.get("search", None)
         args.pop('per_page', None)
         args.pop('search', None)
-        page = int(request.args.get('page'))
+        page = request.args.get('page', None)
         args.pop('page', None)
         if page:
             per_page = int(request.args.get('per_page', 20))
-            products = Product.query.filter_by(**args).offset((page - 1) * per_page).limit(per_page).all()
+            products = Product.query.filter_by(**args).offset((int(page) - 1) * per_page).limit(per_page).all()
         else:
             products = Product.query.filter_by(**args).all()
         result = ProductSchema(many=True).dump(products)
