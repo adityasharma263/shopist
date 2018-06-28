@@ -95,15 +95,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a class="color4" href="#">Shop By Brand</a>
                     <div class="megapanel">
                         <div class="row">
-                            <div class="col1">
-                            <div class="h_nav" >
-                                <!-- <h4>Clothing</h4> -->
-                                <ul ng-repeat="(brandkey,data) in brandData | groupBy:'brand'">
-                                    <li >[[brandkey]]</li>
-                                </ul>	
-                            </div>							
-                        </div>
-					
+							<div class="col-md-2" ng-repeat="(brandkey,data) in brandData | groupBy:'brand'">
+								<p> [[brandkey]]</p>
+							</div>	
 					</div>
 					<div class="row">
 						<div class="col2"></div>
@@ -117,13 +111,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color7" href="#">Shop By Category</a>
                     <div class="megapanel">
                         <div class="row">
-                            <div class="col1">
-                                <div class="h_nav">
-                                    <ul ng-repeat="data in categoryData ">
-                                        <li>[[data.category]]</li>
-                                    </ul>	
-                                </div>							
-                            </div>
+							<div class="col-md-2" ng-repeat="data in categoryData ">
+								<p>[[data.category]]</p>
+							</div>	
 						
 					</div>
 					<div class="row">

@@ -14,12 +14,11 @@ angular.module('product', ['angular.filter'])
     method: 'GET',
     url: '/api/v1/product'
   }).then(function successCallback(response) {
-      console.log("res",response);
-      $scope.productsData = response.data.result.product;
-      console.log("data2",$scope.productsData);
-      // $scope.eventData.description= $scope.eventData.description.replace("\n", "<br>");
-       
-      // this callback will be called asynchronously
+
+    $scope.productsData = response.data.result.product;
+    $scope.categoryData = response.data.result.product;
+
+    // this callback will be called asynchronously
       // when the response is available
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
@@ -29,7 +28,7 @@ angular.module('product', ['angular.filter'])
 onload=function(){
   $scope.location={};
   $scope.location=document.location.search;
-  console.log("location",$scope.location);
+  
   $http({
     method: 'GET',
     url: '/api/v1/product'+$scope.location

@@ -105,15 +105,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<li><a class="color4" href="#">Shop By Brand</a>
 				<div class="megapanel">
 					<div class="row">
-						<div class="col1">
-                        <div class="h_nav" >
-								
-								<ul ng-repeat="(branddata,value) in productsData | groupBy:'brand'">
-									<li style="cursor:pointer" ng-click="searchBrand(branddata)">[[branddata]]</li>
-								</ul>	
-							</div>							
-						</div>
-						
+						<span class="col-sm-2"  ng-repeat="(branddata,value) in productsData | groupBy:'brand'">
+							<p style="cursor:pointer;text-transform: capitalize;" ng-click="searchBrand(branddata)">[[branddata]]</p>
+						</span>	
 					</div>
 					<div class="row">
 						<div class="col2"></div>
@@ -126,25 +120,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</li>
 			
 				<li><a class="color7" href="#">Shop By Category</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<ul ng-repeat="Categorydata in productsData">
-									<li style="cursor:pointer" ng-click="searchCategory(Categorydata.category)">[[Categorydata.category]]</li>
-								</ul>	
-							</div>							
+					<div class="megapanel">
+						<div class="row">
+							<span class="col-sm-2" ng-repeat="(key,data) in categoryData | groupBy:'category'">
+								<p  style="cursor:pointer;text-transform: capitalize;" ng-click="searchCategory(key)">[[key]]</p>
+							</span>	
+							
 						</div>
-						
+						<div class="row">
+							<div class="col2"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+						</div>
 					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
 				</li>		
 				<li><a class="color5" href="#"> Crack Today's Deal</a>
 		 </ul>
@@ -163,11 +153,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="">
 										<img src="[[data.image_url]]" alt="" class="img-responsive" />
 								</a>
-								<h4>[[data.name]]</h4>
+								<h4>[[data.display_name]]</h4>
                                 
-                                <p><a class="item_add" href="[[data.amazon_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> Amazone price <span class=" item_price valsa">[[data.amazon_price]]</span></a></p>
-                                <p><a class="item_add" href="[[data.flipkart_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> flipkart price <span class=" item_price valsa">[[data.flipkart_price]]</span></a></p>
-                                <p><a class="item_add" href="[[data.snapdeal_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> snapdeal price <span class=" item_price valsa">[[data.snapdeal_price]]</span></a></p>
+                                <p><a class="item_add" href="[[data.amazon_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> Amazone ₹ <span class=" item_price valsa">[[data.amazon_price ? data.amazon_price: 'N.A']]</span></a></p>
+                                <p><a class="item_add" href="[[data.flipkart_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> Flipkart ₹ <span class=" item_price valsa">[[data.flipkart_price ? data.flipkart_price: 'N.A']]</span></a></p>
+                                <p><a class="item_add" href="[[data.snapdeal_associates_url]]"><i class="glyphicon glyphicon-shopping-cart"></i> Snapdeal ₹ <span class=" item_price valsa">[[data.snapdeal_price ? data.snapdeal_price: 'N.A']]</span></a></p>
                                 
 							</div>	
 						</div>
