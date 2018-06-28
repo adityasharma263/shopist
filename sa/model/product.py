@@ -8,6 +8,7 @@ class Product(Base):
 
     name = db.Column(db.String)
     image_url = db.Column(db.String, nullable=True)
+    display_name = db.Column(db.String, nullable=True)
     brand = db.Column(db.String, nullable=True)
     category = db.Column(db.String, nullable=True)
     amazon_associates_url = db.Column(db.String, nullable=True)
