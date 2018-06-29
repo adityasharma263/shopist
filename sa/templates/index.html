@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="megapanel">
                         <div class="row">
 							<div class="col-md-2" ng-repeat="(brandkey,data) in brandData | groupBy:'brand'">
-								<p> [[brandkey]]</p>
+								<p style="cursor: pointer;" ng-click="searchBrand(brandkey)">[[brandkey]]</p>
 							</div>	
 					</div>
 					<div class="row">
@@ -112,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="megapanel">
                         <div class="row">
 							<div class="col-md-2" ng-repeat="(key,data) in categoryData | groupBy:'category'">
-								<p>[[key]]</p>
+								<p style="cursor: pointer;" ng-click="searchCategory(key)">[[key]]</p>
 							</div>	
 						
 					</div>

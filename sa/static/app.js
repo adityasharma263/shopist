@@ -215,6 +215,14 @@ $scope.searchCategory=function(categoryname){
       // called asynchronously if an error occurs
       // or server returns response with an error status.
   });
+  $scope.searchBrand=function(brandname){
+    console.log("name",brandname);
+    window.open('/product?brand='+brandname,'_self');
+  }
+  $scope.searchCategory=function(categoryname){
+
+    window.open('/product?category='+categoryname,'_self');
+  }
 $scope.searchProduct=function(){
 
   window.open('/product?search='+$scope.productname,'_self');
