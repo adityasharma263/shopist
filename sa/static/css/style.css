@@ -2197,6 +2197,11 @@ margin:0;
 	
 }
 @media(max-width:640px){
+	.products-grid-left{
+		padding:0 !important;
+	    width: 300px;
+		/* float: right; */
+	}
    .jock-text {
     float: right;
     width: 39%;
@@ -2308,6 +2313,11 @@ margin:0;
 	}
 }
 @media(max-width:480px){
+	.products-grid-left{
+		padding:0 !important;
+		width: 300px;
+		/* float: right; */
+	}
 	.logo a h1 {
 		font-size: 2.3em;
 	}
@@ -2480,8 +2490,14 @@ margin:0;
 	.recommand-section-grids {
     margin-top: 1.5em;
 }
+	
 }
 @media(max-width:320px){
+	.products-grid-left{
+		padding:0 !important;
+		width: 300px;
+			/* float: right; */
+	}
 	.top_left {
 		float: none;
 		text-align: center;

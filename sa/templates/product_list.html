@@ -18,9 +18,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   }
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.2/angular-filter.js"></script> 
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
@@ -101,29 +101,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--start-header-menu-->
 		<ul class="megamenu skyblue">
 			<li class="active grid"><a class="color1" href="index.html">What's Hot</a></li>
-			
-			<li><a class="color4" href="#">Shop By Brand</a>
-				<div class="megapanel">
-					<div class="row">
-						<span class="col-sm-2"  ng-repeat="(branddata,value) in productsData | groupBy:'brand'">
-							<p style="cursor:pointer;text-transform: capitalize;" ng-click="searchBrand(branddata)">[[branddata]]</p>
-						</span>	
+				<li><a class="color4" href="#">Shop By Brand</a>
+					<div class="megapanel">
+						<div class="row">
+							<span class="col-sm-2"  ng-repeat="(key,value) in brandData | groupBy:'brand'">
+								<p style="cursor:pointer;text-transform: capitalize;" ng-click="searchBrand(key)">[[key]]</p>
+							</span>	
+						</div>
+						<div class="row">
+							<div class="col2"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+							<div class="col1"></div>
+						</div>
 					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    				</div>
 				</li>
-			
 				<li><a class="color7" href="#">Shop By Category</a>
 					<div class="megapanel">
 						<div class="row">
-							<span class="col-sm-2" ng-repeat="data in categoryData">
-								<p  style="cursor:pointer;text-transform: capitalize;" ng-click="searchCategory(data.category)">[[data.category]]</p>
+							<span class="col-sm-2" ng-repeat="(key1,data) in brandData | groupBy:'category'">
+								<p  style="cursor:pointer;text-transform: capitalize;" ng-click="searchCategory(key)">[[key1]]</p>
 							</span>	
 							
 						</div>
@@ -135,7 +133,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="col1"></div>
 						</div>
 					</div>
-				</li>		
+				</li>	
+				
+				
+				
 				<li><a class="color5" href="#"> Crack Today's Deal</a>
 		 </ul>
 	</div>

@@ -16,7 +16,11 @@ angular.module('product', ['angular.filter'])
   }).then(function successCallback(response) {
 
     $scope.productsData = response.data.result.product;
+    $scope.brandData = response.data.result.product;
     $scope.categoryData = response.data.result.product;
+
+    console.log("brandData",  $scope.brandData)
+    console.log("categoryData",  $scope.categoryData)
 
     // this callback will be called asynchronously
       // when the response is available
@@ -213,7 +217,7 @@ $scope.searchCategory=function(categoryname){
   });
 $scope.searchProduct=function(){
 
-  window.open('/product?search='+$scope.productname);
+  window.open('/product?search='+$scope.productname,'_self');
 }
       
       

@@ -19,7 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.7/angular-filter.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.2/angular-filter.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="applijegleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -111,8 +111,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color7" href="#">Shop By Category</a>
                     <div class="megapanel">
                         <div class="row">
-							<div class="col-md-2" ng-repeat="data in categoryData ">
-								<p>[[data.category]]</p>
+							<div class="col-md-2" ng-repeat="(key,data) in categoryData | groupBy:'category'">
+								<p>[[key]]</p>
 							</div>	
 						
 					</div>
