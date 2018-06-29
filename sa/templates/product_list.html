@@ -122,8 +122,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a class="color7" href="#">Shop By Category</a>
 					<div class="megapanel">
 						<div class="row">
-							<span class="col-sm-2" ng-repeat="(key,data) in categoryData | groupBy:'category'">
-								<p  style="cursor:pointer;text-transform: capitalize;" ng-click="searchCategory(key)">[[key]]</p>
+							<span class="col-sm-2" ng-repeat="data in categoryData">
+								<p  style="cursor:pointer;text-transform: capitalize;" ng-click="searchCategory(data.category)">[[data.category]]</p>
 							</span>	
 							
 						</div>
