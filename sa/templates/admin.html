@@ -1,5 +1,6 @@
     <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="../static/css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <head>
@@ -9,94 +10,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Trip Key</title>
-        <!-- <style>
-            * {
-            box-sizing: border-box;
-            }
-
-            body {
-            background-color: #f1f1f1;
-            }
-
-            #regForm {
-            background-color: #ffffff;
-            margin: 100px auto;
-            font-family: Raleway;
-            padding: 40px;
-            width: 70%;
-            min-width: 300px;
-            }
-
-            h1 {
-            text-align: center;  
-            }
-
-            input {
-            padding: 10px;
-            /* width: 100%; */
-            font-size: 17px;
-            border: 1px solid #aaaaaa;
-            }
-            .box{
-                width: 50%;
-            }
-            /* Mark input boxes that gets an error on validation: */
-            input.invalid {
-            background-color: #ffdddd;
-            }
-
-            /* Hide all steps by default: */
-            .tab {
-            display: none;
-            
-            }
-
-            button {
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 17px;
-            font-family: Raleway;
-            cursor: pointer;
-            }
-
-            button:hover {
-            opacity: 0.8;
-            }
-
-            #prevBtn {
-            background-color: #bbbbbb;
-            }
-            #submitBtn {
-                display: none;
-            }
-            /* Make circles that indicate the steps of the form: */
-            .step {
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbbbbb;
-            border: none;  
-            border-radius: 50%;
-            display: inline-block;
-            opacity: 0.5;
-            }
-
-            .step.active {
-            opacity: 1;
-            }
-
-            /* Mark the steps that are finished and valid: */
-            .step.finish {
-            background-color: #4CAF50;
-            }
-        </style> -->
     </head>
    
 
 <body ng-app="product">
     <div ng-controller="adminController">    
+        <div id="snackbar"></div>
         <div class="container"  >
             <h2>Product details </h2>
             <div class="container">

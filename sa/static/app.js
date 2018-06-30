@@ -130,68 +130,76 @@ $scope.searchCategory=function(categoryname){
 
 
 .controller('adminController',["$scope", "$http", function($scope, $http) {
-    $scope.product={};
+  $scope.product={};
+  $scope.myvar=false;
+  $scope.showHide=function(){
+    $scope.myvar=true;
+  }
+  $scope.hideShow=function(){
     $scope.myvar=false;
-    $scope.showHide=function(){
-      $scope.myvar=true;
-    }
-    $scope.hideShow=function(){
-      $scope.myvar=false;
-    }
-    $scope.editProductData=function(data){
-      console.log("data",data);
-      $scope.product=data;
-    }
-    $http({
-      method: 'GET',
-      url: '/api/v1/product'
-    }).then(function successCallback(response) {
-        console.log("res",response);
-        $scope.productsData = response.data.result.product;
+  }
+  $scope.editProductData=function(data){
+    console.log("data",data);
+    $scope.product=data;
+  }
+  $http({
+    method: 'GET',
+    url: '/api/v1/product'
+  }).then(function successCallback(response) {
+      console.log("res",response);
+      $scope.productsData = response.data.result.product;
+
+        
+      // this callback will be called asynchronously
+      // when the response is available
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+  });
   
-          
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-    });
-    
-    $scope.createProduct = function() {
+  $scope.createProduct = function() {
 
-        $http({
-          method: 'POST',
-          url: '/api/v1/product',
-          data: $scope.product,
-        
-        }).then(function (res) {
-        //   createToast("'hotel successfully created!!!'","green");
-            
-          },
-          // failed callback
-          function (req) {
-            alert("'Something went wrong!!!'");
-          })
-        
-    }
-    $scope.updateProduct = function() {
-
-      console.log("id",$scope.product);
       $http({
-        method: 'PUT',
-        url: '/api/v1/product/'+$scope.product.id,
+        method: 'POST',
+        url: '/api/v1/product',
         data: $scope.product,
       
       }).then(function (res) {
-      //   createToast("'hotel successfully created!!!'","green");
+        createToast("'Product Successfully Created!!!'","green");
           
         },
         // failed callback
         function (req) {
-          alert("'Something went wrong!!!'");
+          createToast("'something went wrong !!!'","red");
+
         })
       
-      }
+  }
+  $scope.updateProduct = function() {
+
+    console.log("id",$scope.product);
+    $http({
+      method: 'PUT',
+      url: '/api/v1/product/'+$scope.product.id,
+      data: $scope.product,
+    
+    }).then(function (res) {
+      createToast("'product successfully Updated!!!'","green");
+        
+      },
+      // failed callback
+      function (req) {
+        createToast("'something went wrong !!!'","red");
+      })
+    
+    }
+  var createToast=function(msg, color){
+    var x= document.getElementById("snackbar");
+    x.innerHTML=msg;
+    x.style.backgroundColor=color;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
 
 }])
 
